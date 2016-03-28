@@ -1,14 +1,10 @@
 package com.sangeetha.vbaas.core.adapter;
 
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.sangeetha.vbaas.R;
 import com.sangeetha.vbaas.core.model.RecentBlockModel;
-import com.sangeetha.vbaas.core.util.Utils;
-
-import java.util.Date;
 
 import uk.co.ribot.easyadapter.ItemViewHolder;
 import uk.co.ribot.easyadapter.PositionInfo;
@@ -45,7 +41,7 @@ public class RecentBlockedAdapter extends ItemViewHolder<RecentBlockModel> {
 
         blockedName.setText(item.getName());
         blockedNumber.setText(item.getNumber());
-        String date = DateUtils.getRelativeTimeSpanString(Utils.getDateInMillis(item.getDate().toString()), Utils.getDateInMillis(new Date().toString()), DateUtils.MINUTE_IN_MILLIS).toString();
-       blockedDate.setText(date);
+        //String date = DateUtils.getRelativeTimeSpanString(Utils.getDateInMillis(item.getDate().toString()), Utils.getDateInMillis(new Date().toString()), DateUtils.MINUTE_IN_MILLIS).toString();
+        blockedDate.setText("");
     }
 }
