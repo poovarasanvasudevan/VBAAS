@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carbon.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical">
+    
+    
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/relationName"
+        android:hint="Relation Name"
+        android:background="@android:drawable/editbox_background_normal"
+        android:layout_height="50dp" />
+
+    <EditText
+        android:id="@+id/relationMessage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:text="Hii #name \n\t\t I m in meeting can you please call later"
+        android:background="@android:drawable/editbox_background_normal"
+        android:inputType="textMultiLine">
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/errorMsg"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="@color/carbon_red_700"
+        android:textStyle="bold|italic"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <carbon.widget.Button
+            android:layout_width="match_parent"
+            android:text="Add"
+            android:id="@+id/relationaddbutton"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@color/carbon_green_400"
+            android:layout_height="40dp" />
+
+        <carbon.widget.Button
+            android:layout_width="match_parent"
+            android:text="Cancel"
+            android:id="@+id/relationcancelbutton"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@color/carbon_red_400"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+</carbon.widget.LinearLayout>

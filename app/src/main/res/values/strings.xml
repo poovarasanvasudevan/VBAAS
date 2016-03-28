@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">VBaas</string>
+    <item name="item_click_support" type="id" />
+
+    <string-array name="contactarray">
+        <item>View</item>
+        <item>delete</item>
+    </string-array>
+</resources>
