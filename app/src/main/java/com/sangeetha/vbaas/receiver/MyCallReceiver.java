@@ -70,10 +70,11 @@ public class MyCallReceiver extends BroadcastReceiver {
                         if (r.get(i).getContacts().get(j).isMessage()) {
                             String message = "";
 
-                            if (r.get(i).getContacts().get(j).getCmessage() != "") {
-                                message += r.get(i).getMessage().replace("#name", r.get(i).getContacts().get(j).getName());
-                            } else {
+                            if (r.get(i).getContacts().get(j).getCmessage().length() > 0) {
                                 message += r.get(i).getContacts().get(j).getCmessage();
+
+                            } else {
+                                message += r.get(i).getMessage().replace("#name", r.get(i).getContacts().get(j).getName());
                             }
 
 

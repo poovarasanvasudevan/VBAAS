@@ -27,7 +27,6 @@ import com.sangeetha.vbaas.model.RecentBlocked;
 import com.sangeetha.vbaas.receiver.MyCallReceiver;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -89,15 +88,15 @@ public class Home extends AppCompatActivity {
         recentlyblocked.setLayoutManager(llm);
 
 
-
-        Realm realm = Realm.getInstance(getApplicationContext());
-        realm.beginTransaction();
-        RecentBlocked blocked = realm.createObject(RecentBlocked.class);
-        blocked.setNumber("123456789");
-        blocked.setName("Hello");
-        blocked.setDate(new Date());
-        realm.commitTransaction();
-        realm.close();
+//
+//        Realm realm = Realm.getInstance(getApplicationContext());
+//        realm.beginTransaction();
+//        RecentBlocked blocked = realm.createObject(RecentBlocked.class);
+//        blocked.setNumber("123456789");
+//        blocked.setName("Hello");
+//        blocked.setDate(new Date());
+//        realm.commitTransaction();
+//        realm.close();
 
         new RecentBlockLoader().execute();
 
