@@ -150,8 +150,8 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
             Spinner relationSpinner = (Spinner) v.findViewById(R.id.relationSpinner);
             Button addButton = (Button) v.findViewById(R.id.addcontactdialog);
             Button cancelButton = (Button) v.findViewById(R.id.cancelcontactdialog);
-            CheckBox msg = (CheckBox) v.findViewById(R.id.messageconfirm);
-            EditText contactmsg = (EditText) v.findViewById(R.id.contactMessage);
+            final CheckBox msg = (CheckBox) v.findViewById(R.id.messageconfirm);
+            final EditText contactmsg = (EditText) v.findViewById(R.id.contactMessage);
 
 
             msg1 = msg.isEnabled();
@@ -189,8 +189,8 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
                     Contacts con = realm.createObject(Contacts.class);
                     con.setName(name);
                     con.setNumber(phoneNo.replace("+91", "").replaceAll("\\s+", ""));
-                    con.setMessage(msg1);
-                    con.setCmessage(cmessage.trim());
+                    con.setMessage(msg.isEnabled());
+                    con.setCmessage(contactmsg.getText().toString().trim());
                     realm.commitTransaction();
 
                     Relation relations = realm.where(Relation.class).equalTo("name", relationPosition).findFirst();
@@ -234,6 +234,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
             RealmResults<Contacts> relations = realm.where(Contacts.class).findAll();
             for (Contacts r : relations) {
                 // ... do something with the object ...
+                Log.i("Message and Status",r.getCmessage() + "--"+r.isMessage());
                 rm.add(new ContactModel(r.getName(), r.getNumber()));
             }
 
