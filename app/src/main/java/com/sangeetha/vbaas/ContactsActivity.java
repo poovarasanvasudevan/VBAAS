@@ -184,12 +184,15 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+
+
                     Realm realm = Realm.getInstance(ContactsActivity.this);
                     realm.beginTransaction();
                     Contacts con = realm.createObject(Contacts.class);
                     con.setName(name);
                     con.setNumber(phoneNo.replace("+91", "").replaceAll("\\s+", ""));
-                    con.setMessage(msg.isEnabled());
+                    con.setMessage(msg.isChecked());
                     con.setCmessage(contactmsg.getText().toString().trim());
                     realm.commitTransaction();
 
