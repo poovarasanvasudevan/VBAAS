@@ -1,5 +1,6 @@
 package com.sangeetha.vbaas;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.sangeetha.vbaas.core.adapter.RelationAdapter;
 import com.sangeetha.vbaas.core.model.RelationModel;
+import com.sangeetha.vbaas.core.util.ItemClickSupport;
 import com.sangeetha.vbaas.model.Relation;
 
 import java.util.ArrayList;
@@ -105,6 +107,7 @@ public class RelationActivity extends AppCompatActivity {
                         relation.setMessage(relationMessageTxt);
                         realm.commitTransaction();
                         dialog.dismiss();
+                        realm.close();
 
                         new RelationLoader().execute();
 
@@ -126,7 +129,7 @@ public class RelationActivity extends AppCompatActivity {
         protected List<RelationModel> doInBackground(Void... voids) {
             Realm realm = Realm.getInstance(RelationActivity.this);
 
-            List<RelationModel> rm = new ArrayList<>();
+            ArrayList<RelationModel> rm = new ArrayList<>();
             RealmResults<Relation> relations = realm.where(Relation.class).findAll();
             for (Relation r : relations) {
                 // ... do something with the object ...
@@ -139,7 +142,7 @@ public class RelationActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(List<RelationModel> relationModels) {
+        protected void onPostExecute(final List<RelationModel> relationModels) {
 
 
             relationList.setAdapter(new EasyRecyclerAdapter<RelationModel>(
@@ -148,6 +151,15 @@ public class RelationActivity extends AppCompatActivity {
                     relationModels));
 
             relationswipe.setRefreshing(false);
+
+            ItemClickSupport.addTo(relationList).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                @Override
+                public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                    Intent i = new Intent(RelationActivity.this,RelationContact.class);
+                    i.putExtra("relationname",relationModels.get(position).getName());
+                    startActivity(i);
+                }
+            });
 
             super.onPostExecute(relationModels);
         }

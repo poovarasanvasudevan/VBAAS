@@ -185,8 +185,6 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
                 @Override
                 public void onClick(View view) {
 
-
-
                     Realm realm = Realm.getInstance(ContactsActivity.this);
                     realm.beginTransaction();
                     Contacts con = realm.createObject(Contacts.class);
@@ -195,6 +193,7 @@ public class ContactsActivity extends AppCompatActivity implements AdapterView.O
                     con.setMessage(msg.isChecked());
                     con.setCmessage(contactmsg.getText().toString().trim());
                     realm.commitTransaction();
+
 
                     Relation relations = realm.where(Relation.class).equalTo("name", relationPosition).findFirst();
 

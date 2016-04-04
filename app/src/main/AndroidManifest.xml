@@ -31,7 +31,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".RelationContact"></activity>
     </application>
 
 </manifest>

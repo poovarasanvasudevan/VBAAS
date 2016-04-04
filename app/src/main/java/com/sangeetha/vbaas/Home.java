@@ -87,17 +87,6 @@ public class Home extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recentlyblocked.setLayoutManager(llm);
 
-
-//
-//        Realm realm = Realm.getInstance(getApplicationContext());
-//        realm.beginTransaction();
-//        RecentBlocked blocked = realm.createObject(RecentBlocked.class);
-//        blocked.setNumber("123456789");
-//        blocked.setName("Hello");
-//        blocked.setDate(new Date());
-//        realm.commitTransaction();
-//        realm.close();
-
         new RecentBlockLoader().execute();
 
         blockedswipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -208,6 +197,7 @@ public class Home extends AppCompatActivity {
                 recentBlockedModel.add(new RecentBlockModel(r.getName(), r.getNumber(), r.getDate()));
             }
 
+            realm.close();
 
             return recentBlockedModel;
         }

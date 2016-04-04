@@ -7,6 +7,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.sangeetha.vbaas.model.RecentBlocked;
 
@@ -69,5 +70,7 @@ public class Settings extends AppCompatActivity {
 
         realm.commitTransaction();
         realm.close();
+
+        Toast.makeText(getApplicationContext(),"Blocked list cleared",Toast.LENGTH_LONG).show();
     }
 }
